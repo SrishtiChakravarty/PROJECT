@@ -1,0 +1,198 @@
+#include <iostream>
+#include <bits/stdc++.h>
+using namespace std;
+
+int BinarytoDecimal(int n){
+     
+     int ans=0;
+     int x=1 ;
+     while(n>0){
+         int y=n%10;
+         ans += x*y;
+         x *= 2;
+         n /=10;
+         
+     }
+     return ans;
+     
+}
+
+int OctaltoDecimal(int n){
+     
+     int ans=0;
+     int x=1 ;
+     while(n>0){
+         int y=n%10;
+         ans += x*y;
+         x *= 8;
+         n /=10;
+         
+     }
+     return ans;
+     
+}
+
+
+int HexadecimaltoDecimal(string s){
+     
+     int ans=0;
+     int x=1 ;
+     int m=s.size();
+     
+     for(int i=m-1;i>=0;i--){
+         if(s[i] >= '0' && s[i] <= '9' ){
+             ans += x * (s[i]-'0');
+         }
+         else if(s[i] >='A' && s[i]<= 'F'){
+             
+             ans += x * (s[i]-'A' + 10);
+         }
+           
+         x *= 16;
+         
+     }
+     return ans;
+     
+}
+
+
+int DecimaltoBinary(int n){
+    int x=1;
+    int ans=0;
+    while(x<=n){
+        x *= 2;
+        }
+        x /= 2;
+    while(x>0){
+        int lastdigit = n/x;
+        n -= lastdigit*x ;
+        x /= 2;
+        ans = ans*10 + lastdigit ;
+        
+    }  
+    return ans;
+    
+        
+}
+int DecimalToOctal(int n){
+    int x=1;
+    int ans=0;
+    while(x<=n){
+        x *= 8;
+        }
+        x /= 8;
+    while(x>0){
+        int lastdigit = n/x;
+        n -= lastdigit*x ;
+        x /= 8;
+        ans = ans*10 + lastdigit ;
+        
+    }  
+    return ans;
+    
+        
+}
+
+
+
+
+string DecimalToHexadecimal(int n){
+    int x=1;
+    string  ans="";
+    while(x<=n){
+        x *= 16;
+        }
+        x /= 16;
+    while(x>0){
+        int lastdigit = n/x;
+        n -= lastdigit*x ;
+        x /= 16;
+       if(lastdigit <= 9){
+           ans= ans + to_string(lastdigit);
+       }
+        else {
+            char c= 'A' + lastdigit - 10;
+            ans.push_back(c);
+            
+        }
+    }  
+    return ans;
+    
+        
+}
+
+
+
+
+
+int main() {
+    int n;
+    string s;
+    
+    
+    int choice;
+    
+    cout <<"Welocome"<<endl;
+    
+    cout<<"1"<<"Binary to decimal = "<<endl;
+    cout<<"2"<<"Octal to decimal = "<<endl;
+    
+    
+    cout<<"3"<<"Hexadecimal to decimal = "<<endl;
+    cout<<"4"<<"DecimaltoBinary"<<endl;
+    cout<<"5"<<"DecimalToOctal"<<endl;
+    
+    cout<<"6"<<"Octal to decimal "<<endl;
+    cout<<"7"<<"DecimalToHexadecimal"<<endl;
+    cout<<"---------------------------------------"<<endl;
+    cout<<"PLEASE ENTER YOUR CHOICE ";
+    cin>>choice;
+    
+    
+    switch(choice){
+        case 1:
+        cin>>n;
+        cout<<"1"<<"Binary to decimal = "<<BinarytoDecimal(n)<<endl;
+        break;
+        
+        
+        case 2:
+        int n;
+        cout<<"2"<<"Octal to decimal = "<<OctaltoDecimal(n)<<endl;
+        break;
+        
+        case 3:
+        cout<<"3"<<"Hexadecimal to decimal = "<<HexadecimaltoDecimal(s)<<endl;
+        break;
+        
+        
+        case 4:
+        cin>>n;
+        cout<<"4"<<DecimaltoBinary(n)<<endl;
+        break;
+        
+        
+        case 5:
+        cin>>n;
+        cout<<"5"<<DecimalToOctal(n);
+        break;
+        
+        
+         case 6:
+         cin>>n;
+         cout<<"Octal to decimal = "<<OctaltoDecimal(n)<<endl;
+         break;
+         
+         case 7:
+         cin>>n;
+	     cout<<DecimalToHexadecimal(n)<<endl;
+	     break;
+	     
+	     default :
+	     cout<<"Sorry ! Invalid Input ";
+        
+        
+    }
+	
+	return 0;
+}
