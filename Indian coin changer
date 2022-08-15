@@ -1,0 +1,54 @@
+#include <algorithm>
+#include <string>
+#include <bits/stdc++.h>
+#include <vector>
+
+
+using namespace std;
+
+// #define int long long 
+#define vi vector<int>
+#define pii pair<int,int>
+#define vii vector<pii>
+#define rep(i,a,b)  for(int i=a;i<b;i++)
+#define ff first
+#define ss second
+#define setBits(x) buildin_popcount(x)
+
+
+signed main(){
+   
+   
+   cout<<"welcome to Indian coin changer"<<endl;
+   cout<<"I will calculate the the quantity of notes and coins for you"<<endl;
+    
+    int n;
+    cout<<"please enter the  number  types of notes and coins you  have "<<endl;
+    cin>>n;
+    
+    vi a(n);
+    
+    
+    cout<<"Please enter the change name :Ex 5 rs/-,10rs/-,Please enter the number only "<<endl;
+    rep(i,0,n)
+    cin>>a[i];
+    
+    int x;
+    cin>>x;
+    
+    sort(a.begin(),a.end(),greater<int>());
+    int ans=0;
+    
+    for(int i=0;i<n;i++){
+        
+        ans+=x/a[i];
+        x-=x/a[i] * a[i]; //technique to find remainder 
+        
+        
+    }
+    cout<<"following are the no of notes you need "<<endl;
+    cout<<ans<<endl;
+    cout<<" Thankyou for using me"<<endl;
+    return 0;
+}
+
